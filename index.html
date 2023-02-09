@@ -1,0 +1,79 @@
+<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/3.0.2/aframe/build/aframe-ar-nft.js"></script>
+
+<style>
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+</style>
+
+<body style="margin : 0px; overflow: hidden;">
+  <!-- minimal loader shown until image descriptors are loaded -->
+  <div class="arjs-loader">
+    <div>Loading, please wait a bit ...</div>
+  </div>
+  <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+  >
+    <!-- we use cors proxy to avoid cross-origin problems -->
+    <a-nft
+      type="nft"
+      url="https://boomar.github.io/chequers/tracking_image/chequers_hills"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+    >
+      
+      <!--Plane-->
+      <a-entity position="500 300 0"  animation="property: position; to: -100 300 0; dur: 10000; easing: linear; loop: true">
+      <a-image src="images/plane.png" scale = "0.3 0.3 10" width="1243" height="364" transparent="true" alpha-test="0.5"></a-image>
+      </a-entity>
+      
+      <!--Chequers house-->
+      <a-entity position="130 20 1">
+      <a-image src="images/chequers.png" scale = "0.5 0.5 10" width="842" height="595" transparent="true" alpha-test="0.5"></a-image>
+      </a-entity>
+      
+      <!--Johnson-->
+      <a-entity position="-30 -40 2" animation="property: position; to: 150 -40 2; dur: 10000; easing: linear; loop: true">
+      <a-image src="images/johnson.png" scale = "0.5 0.5 10" width="558" height="595" transparent="true" alpha-test="0.5"></a-image>
+      </a-entity>
+      
+      <!--Flowers-->
+      <a-entity position="20 -40 3">
+      <a-image src="images/flowers.png" scale = "1 1 10" width="1322" height="511" transparent="true" alpha-test="0.2"></a-image>
+      </a-entity>
+
+        
+    </a-nft>
+    <a-entity camera></a-entity>
+    
+  <!--sound-->
+  <a-sound src="sounds/bird_song.mp3" autoplay="true" loop="true"></a-sound>
+  
+    
+      
+  </a-scene>
+  
+  
+  
+</body>
