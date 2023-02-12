@@ -25,27 +25,36 @@
 <body style="margin : 0px; overflow: hidden;">
   <!-- minimal loader shown until image descriptors are loaded -->
   <div class="arjs-loader">
-    <div>Loading, please wait a bit ...</div>
+    <div>Loading, please wait...</div>
   </div>
   <a-scene
     vr-mode-ui="enabled: false;"
-    renderer="logarithmicDepthBuffer: true;"
+    renderer="logarithmicDepthBuffer: true; precision: medium;"
     embedded
     arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
   >
-    <!-- we use cors proxy to avoid cross-origin problems -->
+    <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
     <a-nft
       type="nft"
-      url="https://boomar.github.io/chequers/tracking_image/chequers_hills"
+      url="https://boomar.github.io/onlyhuman/tracking_image/hop"
       smooth="true"
       smoothCount="10"
       smoothTolerance=".01"
-      smoothThreshold="5">
-	    
+      smoothThreshold="5"
+    >
+      
       <!--Hancock kiss-->
       <a-entity position="200 100 0">
-      <a-image src="images/hancock-kiss.png" scale = "0.5 0.5 10" width="321" height="480" transparent="true" alpha-test="0.5"></a-image>
-	    </a-entity>
+      <!--<a-image src="https://media.giphy.com/media/Xf34hKbqCmyU2gJUVX/giphy.gif" scale = "0.5 0.5 10" width="321" height="480" transparent="true" alpha-test="0.5"></a-image>-->
+        
+	<a-assets>
+        <video src="images/hancock_kiss.mp4" preload="auto" id="vid" response-type="arraybuffer" loop autoplay autofocus playsinline>
+        </video>
+	</a-assets>
+        
+        
+      </a-entity>
+      
 
       <!--Hancock mask-->
       <!--<a-entity position="130 20 1">
